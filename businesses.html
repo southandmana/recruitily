@@ -92,12 +92,16 @@
   e.preventDefault();
 
   const form = e.target;
-  const data = new FormData(form);
+const formData = new URLSearchParams(new FormData(form));
 
-  fetch(form.action, {
-    method: "POST",
-    body: data
-  })
+fetch(form.action, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  body: formData
+})
+
   .then(response => {
     if (response.ok) {
       document.querySelectorAll(".form-step").forEach(el => el.classList.remove("active"));
