@@ -1,0 +1,227 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #F9F5F3;
+  color: #4D4D4D;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background-color: #F9F5F3;
+  color: #7A1F1F;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #C53A3A;
+}
+
+.site-logo {
+  height: 50px;
+  margin-right: 1rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+nav a {
+  color: #7A1F1F;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main Layout & Hero */
+main {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.hero h2,
+.page-intro h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #7A1F1F;
+}
+
+.hero p,
+.page-intro p {
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #C53A3A;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #7A1F1F;
+}
+
+/* Section Styling */
+.page-intro,
+.benefits,
+.cta,
+.contact-section {
+  margin-bottom: 2rem;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+ul li::before {
+  content: '✔️';
+  position: absolute;
+  left: 0;
+}
+
+/* Footer */
+footer {
+  background: #F9F5F3;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  color: #7A1F1F;
+  margin-top: 3rem;
+}
+
+/* Responsive Header if mobile */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header-left {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .site-logo {
+    margin: 0 0 10px 0;
+  }
+
+  nav {
+    justify-content: center;
+  }
+}
+
+/* Other Mobile Adjustments */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav a {
+    display: block;
+    margin: 8px 0;
+  }
+
+  .hero h2,
+  .page-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    display: block;
+    margin: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* === Recruitily Client Form Styling (App-style) === */
+.form-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #004a99;
+}
+
+label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  background: #007acc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #005f99;
+}
+
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+}
+

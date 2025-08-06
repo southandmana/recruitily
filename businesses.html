@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recruitily – For Businesses</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+  <div class="header-left">
+    <img src="images/logo.svg" alt="Recruitily Logo" class="site-logo">
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="workers.html">Workers</a>
+    <a href="businesses.html">Businesses</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+  <main>
+    <!-- === Client Job Request Form (App-style) === -->
+<section class="form-container">
+  <form id="clientForm" method="POST" action="https://script.google.com/macros/s/AKfycbz51-lLWXmTQMBWwTY0NPW4Zf-g0PGiXg0WpvP3qqKUhNP9PdnJSjQ__3QZ0s-Y9ggN/exec">
+
+    <!-- Step 1 -->
+    <div class="form-step active" id="step1">
+      <h2>Step 1: About You</h2>
+      <label>Your Name:<br>
+        <input type="text" name="name" required />
+      </label><br>
+      <label>Company Name (optional):<br>
+        <input type="text" name="company" />
+      </label><br>
+      <label>Email:<br>
+        <input type="email" name="email" required />
+      </label><br>
+      <button type="button" onclick="nextStep(1)">Next</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="form-step" id="step2">
+      <h2>Step 2: Job Details</h2>
+      <label>Job Title or Role:<br>
+        <input type="text" name="job_title" required />
+      </label><br>
+      <label>Languages Required:<br>
+        <input type="text" name="languages" required />
+      </label><br>
+      <label>Preferred Time Zone / Overlap:<br>
+        <input type="text" name="timezone" />
+      </label><br>
+      <button type="button" onclick="prevStep(2)">Back</button>
+      <button type="button" onclick="nextStep(2)">Next</button>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="form-step" id="step3">
+      <h2>Step 3: Time & Urgency</h2>
+      <label>Start Date:<br>
+        <input type="date" name="start_date" required />
+      </label><br>
+      <label>Hours Per Week:<br>
+        <input type="number" name="hours_per_week" min="1" required />
+      </label><br>
+      <button type="button" onclick="prevStep(3)">Back</button>
+      <button type="submit">Submit</button>
+    </div>
+
+    <!-- Confirmation -->
+    <div class="form-step" id="confirmation">
+      <h2>✅ Job Request Submitted</h2>
+      <p>Thank you! We’ll review your request and match you with fair-priced talent.</p>
+    </div>
+  </form>
+</section>
+
+<script>
+  function nextStep(current) {
+    document.getElementById('step' + current).classList.remove('active');
+    document.getElementById('step' + (current + 1)).classList.add('active');
+  }
+
+  function prevStep(current) {
+    document.getElementById('step' + current).classList.remove('active');
+    document.getElementById('step' + (current - 1)).classList.add('active');
+  }
+
+  document.getElementById("clientForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const data = new FormData(form);
+
+  fetch(form.action, {
+    method: "POST",
+    body: data
+  })
+  .then(response => {
+    if (response.ok) {
+      document.querySelectorAll(".form-step").forEach(el => el.classList.remove("active"));
+      document.getElementById("confirmation").classList.add("active");
+    } else {
+      alert("Something went wrong. Please try again later.");
+    }
+  })
+  .catch(() => {
+    alert("Submission failed. Check your internet connection.");
+  });
+});
+
+</script>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Recruitily</p>
+  </footer>
+</body>
+</html>
