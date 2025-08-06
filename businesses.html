@@ -23,7 +23,7 @@
   <main>
     <!-- === Client Job Request Form (App-style) === -->
 <section class="form-container">
-  <form id="clientForm" method="POST" action="https://script.google.com/macros/s/AKfycbyiv2TJgMvVs_ERs-pbyypWZdlFxIpwGS_HT9I23IeU7NSSDqRt5p87a1uldr4-Qh0L/exec">
+  <form method="POST" action="https://script.google.com/macros/s/AKfycbyiv2TJgMvVs_ERs-pbyypWZdlFxIpwGS_HT9I23IeU7NSSDqRt5p87a1uldr4-Qh0L/exec">
 
     <!-- Step 1 -->
     <div class="form-step active" id="step1">
@@ -87,34 +87,6 @@
     document.getElementById('step' + current).classList.remove('active');
     document.getElementById('step' + (current - 1)).classList.add('active');
   }
-
-  document.getElementById("clientForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const form = e.target;
-const formData = new URLSearchParams(new FormData(form));
-
-fetch(form.action, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded"
-  },
-  body: formData
-})
-
-  .then(response => {
-    if (response.ok) {
-      document.querySelectorAll(".form-step").forEach(el => el.classList.remove("active"));
-      document.getElementById("confirmation").classList.add("active");
-    } else {
-      alert("Something went wrong. Please try again later.");
-    }
-  })
-  .catch((error) => {
-  console.error("Submission error:", error);
-  alert("Submission failed. See browser console for details.");
-});
-
 </script>
 
   </main>
