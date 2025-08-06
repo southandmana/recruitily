@@ -110,9 +110,9 @@ fetch(form.action, {
       alert("Something went wrong. Please try again later.");
     }
   })
-  .catch(() => {
-    alert("Submission failed. Check your internet connection.");
-  });
+  .catch((error) => {
+  console.error("Submission error:", error);
+  alert("Submission failed. See browser console for details.");
 });
 
 </script>
