@@ -87,6 +87,32 @@
     document.getElementById('step' + current).classList.remove('active');
     document.getElementById('step' + (current - 1)).classList.add('active');
   }
+
+  document.getElementById("clientForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // Stop form from refreshing the page
+
+    const form = e.target;
+    const formData = new URLSearchParams(new FormData(form));
+
+    fetch(form.action, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        document.querySelectorAll(".form-step").forEach(el => el.classList.remove("active"));
+        document.getElementById("confirmation").classList.add("active");
+      } else {
+        alert("Something went wrong. Please try again later.");
+      }
+    })
+    .catch(() => {
+      alert("Submission failed. Check your internet connection.");
+    });
+  });
 </script>
 
   </main>
